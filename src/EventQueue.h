@@ -8,7 +8,7 @@
 //  Sean Wu
 //  August 18, 2017
 //  A specialized data structure for the MASH project
-//  Fork of 'dequer' package for R by Drew Schmidt (license below)
+//  Fork of 'EventQueuer' package for R by Drew Schmidt (license below)
 //
 ///////////////////////////////////////////////////////////////////////////
 
@@ -38,8 +38,13 @@
     SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-#ifndef _EVENTQ_H_
-#define _EVENTQ_H_
+// name changes:
+// EventQueue_t: EventQueue
+// list_t: Event
+// data: EventData
+
+#ifndef _EVENTQUEUE_H_
+#define _EVENTQUEUE_H_
 
 #include <R.h>
 #include <Rinternals.h>
@@ -59,5 +64,38 @@ typedef struct Event{
   struct Event *prev;
   SEXP EventData;
 } Event;
+
+#define PRINTORDER_FORWARD_EVENTQUEUE 1
+#define PRINTORDER_FORWARD_EVENTQUEUE 2
+
+#define PEEKER_HEAD_EVENTQUEUE 1
+#define PEEKER_TAIL_EVENTQUEUE 2
+
+#define PRINT_FEW_EVENTQUEUE 1
+#define PRINT_ALL_EVENTQUEUE 2
+
+
+// External pointer shorthand
+#define CHECKPTR(ptr) if(ptr==NULL)error("queue/stack/EventQueue is invalid: pointer is NULL")
+
+#define newRptr(ptr,Rptr,fin) PROTECT(Rptr = R_MakeExternalPtr(ptr, R_NilValue, R_NilValue));R_RegisterCFinalizerEx(Rptr, fin, TRUE)
+#define getRptr(ptr) R_ExternalPtrAddr(ptr);
+
+// Misc R shorthand
+#define CHARPT(x,i)	((char*)CHAR(STRING_ELT(x,i)))
+#define INT(x) INTEGER(x)[0]
+
+
+EventQueue *EventQueue_create();
+void EventQueue_push(EventQueue *eq, SEXP data);
+void EventQueue_pushback(EventQueue *eq, SEXP data);
+SEXP EventQueue_pop(EventQueue *eq);
+SEXP EventQueue_popback(EventQueue *eq);
+void EventQueue_reverse(EventQueue *eq);
+int EventQueue_split(const uint32_t k, EventQueue *eq, EventQueue **eq2);
+int EventQueue_combine(EventQueue *eq, EventQueue *eq2);
+void EventQueue_free(EventQueue *eq);
+void EventQueue_print(EventQueue *eq);
+
 
 #endif
