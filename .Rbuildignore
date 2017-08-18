@@ -4,3 +4,5 @@ redocument
 TODO
 
 tests/val
+^.*\.Rproj$
+^\.Rproj\.user$
