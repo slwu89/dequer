@@ -11,7 +11,7 @@
 #' environments or hashing.  To avoid unnecessary data copying, most operations
 #' on these data structures are performed via side-effects.
 #'
-#' @useDynLib dequer R_deque_create R_deque_combine R_deque_headsortails
+#' @useDynLib dequer R_eapply_noOut R_deque_create R_deque_combine R_deque_headsortails
 #' R_deque_length R_deque_pop R_deque_popback R_deque_print R_deque_push
 #' R_deque_pushback R_deque_reverse R_deque_split R_deque_str R_deque_to_Rlist  R_deque_add2Q
 #'

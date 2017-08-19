@@ -59,86 +59,86 @@ deque_t *deque_create()
 // dl->start = l;
 // dl->len++;
 
-void create_node(deque_t *dl, list_t *prev, list_t *next, SEXP data){
+// void create_node(deque_t *dl, list_t *prev, list_t *next, SEXP data){
+//
+//   // alloc memory for new node
+//   list_t *new;
+//   new = malloc(sizeof(*new));
+//
+//   // update data
+//   new->prev = NULL;
+//   new->next = NULL;
+//   new->data = data;
+//
+//   // if input 'prev' pointer NULL put node at the start
+//   if(prev = NULL){
+//
+//     dl->start = new;
+//
+//     if(next == NULL){
+//       dl->end = new;
+//     } else {
+//       next->prev = new;
+//     }
+//
+//   } else if(next == NULL){
+//     dl->end = new;
+//     prev->next = new;
+//   }
+//
+//   // insert in the middle
+//
+// }
 
-  // alloc memory for new node
-  list_t *new;
-  new = malloc(sizeof(*new));
-
-  // update data
-  new->prev = NULL;
-  new->next = NULL;
-  new->data = data;
-
-  // if input 'prev' pointer NULL put node at the start
-  if(prev = NULL){
-
-    dl->start = new;
-
-    if(next == NULL){
-      dl->end = new;
-    } else {
-      next->prev = new;
-    }
-
-  } else if(next == NULL){
-    dl->end = new;
-    prev->next = new;
-  }
-
-  // insert in the middle
-
-}
-
-// Creates a new node with the given number
-void create_node ( llist *list, node *prev, node *next, const char *name, int id_number) {
-
-    node *new;
-
-    /* Allocate memory for the new node */
-    new = (node *)malloc( sizeof(node) );
-
-    /* Store the number */
-    new->id = id_number;
-    /* Store the string */
-    new->name = (char *)malloc(sizeof(char)*strlen(name)+1);
-
-    /* Make sure memory is available */
-    if (new->name == NULL){
-        printf("Out of Memory");
-        exit(1);
-    }
-    strcpy(new->name, name);
-
-    /* Update pointers */
-    if ( prev == NULL) {
-        list->head = new;
-
-        if (next == NULL){
-            list->tail = new;
-        }
-        else {
-            next->prev = new;
-        }
-    }
-
-    else if (next == NULL){
-        list->tail = new;
-        prev->next = new;
-    }
-
-    /* Inserting in the middle */
-    else {
-        prev->next = new;
-        next->prev = new;
-    }
-    new->next = next;
-    new->prev = prev;
-
-    /* Update lenght size of the list */
-    list->length++;
-
-}
+// // Creates a new node with the given number
+// void create_node ( llist *list, node *prev, node *next, const char *name, int id_number) {
+//
+//     node *new;
+//
+//     /* Allocate memory for the new node */
+//     new = (node *)malloc( sizeof(node) );
+//
+//     /* Store the number */
+//     new->id = id_number;
+//     /* Store the string */
+//     new->name = (char *)malloc(sizeof(char)*strlen(name)+1);
+//
+//     /* Make sure memory is available */
+//     if (new->name == NULL){
+//         printf("Out of Memory");
+//         exit(1);
+//     }
+//     strcpy(new->name, name);
+//
+//     /* Update pointers */
+//     if ( prev == NULL) {
+//         list->head = new;
+//
+//         if (next == NULL){
+//             list->tail = new;
+//         }
+//         else {
+//             next->prev = new;
+//         }
+//     }
+//
+//     else if (next == NULL){
+//         list->tail = new;
+//         prev->next = new;
+//     }
+//
+//     /* Inserting in the middle */
+//     else {
+//         prev->next = new;
+//         next->prev = new;
+//     }
+//     new->next = next;
+//     new->prev = prev;
+//
+//     /* Update lenght size of the list */
+//     list->length++;
+//
+// }
 
 
 // auto add and sort

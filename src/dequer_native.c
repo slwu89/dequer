@@ -7,6 +7,7 @@
 
 // deque_add2Q
 extern SEXP R_deque_add2Q(SEXP deque_ptr, SEXP data);
+extern SEXP R_eapply_noOut(SEXP envir);
 extern SEXP R_deque_combine(SEXP deque_ptr1, SEXP deque_ptr2);
 extern SEXP R_deque_create();
 extern SEXP R_deque_headsortails(SEXP deque_ptr, SEXP n, SEXP headsortails);
@@ -23,6 +24,7 @@ extern SEXP R_deque_to_Rlist(SEXP deque_ptr);
 
 static const R_CallMethodDef CallEntries[] = {
   {"R_deque_add2Q", (DL_FUNC) &R_deque_add2Q, 2},
+  {"R_eapply_noOut", (DL_FUNC) &R_eapply_noOut, 1},
   {"R_deque_combine", (DL_FUNC) &R_deque_combine, 2},
   {"R_deque_create", (DL_FUNC) &R_deque_create, 0},
   {"R_deque_headsortails", (DL_FUNC) &R_deque_headsortails, 3},
